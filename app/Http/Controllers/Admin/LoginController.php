@@ -7,5 +7,12 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    //
+       /**
+     * show dashboard
+     */
+    public function ShowLoginForm()
+    {
+        return view('admin.login');
+    }
+
 }
