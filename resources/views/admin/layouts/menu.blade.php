@@ -8,7 +8,7 @@
 								<span>Main</span>
 							</li>
 							<li class="active"> 
-								<a href="index.html"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+								<a href="{{ route('admin.dashboard') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 							</li>
 					
 					
@@ -21,9 +21,9 @@
 							<li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="login.html"> Admin User </a></li>
-									<li><a href="register.html"> Role </a></li>
-									<li><a href="forgot-password.html"> Permision </a></li>
+									<li><a href="{{route ('admin.create')}}"> Admin User </a></li>
+									<li><a href="{{route ('admin.role')}}"> Role </a></li>
+									<li><a href="{{route ('admin.permission')}}"> Permision </a></li>
 								</ul>
 							</li>
 							<li class="submenu">
