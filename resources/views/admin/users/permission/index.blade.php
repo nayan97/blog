@@ -59,10 +59,11 @@
 									<h4 class="card-title">Add new permission</h4>
 								</div>
 								<div class="card-body">
-									<form action="#">
+									<form action="#" method="POST">
+                                        @csrf
 										<div class="form-group">
 											<label>Permission Name</label>
-											<input type="text" class="form-control">
+											<input name="name" type="text" class="form-control">
 										</div>
 									
 										<div class="text-right">
