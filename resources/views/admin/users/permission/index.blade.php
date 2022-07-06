@@ -1,3 +1,4 @@
+use Session;
 @extends('admin.layouts.app')
 @section('main-content')
 	<!-- Page Wrapper -->
@@ -35,18 +36,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
-                                       <tr>
-                                            <td>1</td>
-                                            <td>Slider</td>
-                                            <td>slider</td>
-                                            <td>10 min ago</td>
+                                         @forelse($all_data as $item)
+                                         
+                                         <tr>
+                                            <td>{{$loop ->index + 1}}</td>
+                                            <td>{{$item -> name}}</td>
+                                            <td>{{$item -> slug}}</td>
+                                            <td>{{$item -> created_at -> diffForHumans()}}</td>
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
                                                 <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
                                                 <a class="btn btn-sm btn-danger" href="#"><i class="fe fe-trash"></i></a>
                                             </td>
                                        </tr>
+                                         
+                                         
+                                         @empty
+
+                                         @endforelse  
+                                 
                                         </tbody>
                                     </table>
 								
@@ -59,7 +67,17 @@
 									<h4 class="card-title">Add new permission</h4>
 								</div>
 								<div class="card-body">
-									<form action="#" method="POST">
+
+                                @if( $errors -> any())
+                                <p class="alert alert-danger">{{$errors -> first()}} <button class="close" data-dismiss="alert">&times;</button></p>
+
+                                 @endif
+                                 @if(Session::has('success'))
+                                <p class="alert alert-success">{{Session::get('success')}} <button class="close" data-dismiss="alert">&times;</button></p>
+
+                                 @endif
+
+									<form action="{{ route('admin.permission.store')}}" method="POST">
                                         @csrf
 										<div class="form-group">
 											<label>Permission Name</label>
