@@ -42,4 +42,20 @@ class PermissiondController extends Controller
 
        return back() ->with('success', 'Permission added successfuly');
     }
+
+
+    public function destroy($id)
+    {
+      $delete_data = Permission::findOrFail($id);
+      $delete_data -> delete();
+      return back() ->with('success-main', 'Permission deleted successfuly');
+    }
+
+
+
+
+
+
+
+
 }

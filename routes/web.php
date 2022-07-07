@@ -15,6 +15,7 @@ Route::get ('admin-login', [LoginController::class,'ShowLoginForm'])-> name('adm
 
 Route::get ('permission', [ PermissiondController::class,'index'])-> name('admin.permission');
 Route::post ('permission', [ PermissiondController::class,'store'])-> name('admin.permission.store');
+Route::get ('permission-delete/{id}', [ PermissiondController::class,'destroy'])-> name('admin.permission.destroy');
 
 
 // Roles

@@ -25,6 +25,13 @@ use Session;
 									<h4 class="card-title">All Permision</h4>
 								</div>
 								<div class="card-body">
+
+
+                                @if(Session::has('success-main'))
+                                <p class="alert alert-success">{{Session::get('success-main')}} <button class="close" data-dismiss="alert">&times;</button></p>
+
+                                 @endif
+
                                     <table class="table table-striped">
                                         <thead> 
                                                 <tr>
@@ -46,7 +53,7 @@ use Session;
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
                                                 <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
-                                                <a class="btn btn-sm btn-danger" href="#"><i class="fe fe-trash"></i></a>
+                                                <a class="btn btn-sm btn-danger" href="{{ route ('admin.permission.destroy', $item -> id)}}"><i class="fe fe-trash"></i></a>
                                             </td>
                                        </tr>
                                          
