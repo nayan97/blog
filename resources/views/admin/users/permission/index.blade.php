@@ -52,7 +52,7 @@ use Session;
                                             <td>{{$item -> created_at -> diffForHumans()}}</td>
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
-                                                <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
+                                                <a class="btn btn-sm btn-warning" href="{{ route ('admin.permission.edit', $item -> id)}}"><i class="fe fe-edit"></i></a>
                                                 <a class="btn btn-sm btn-danger" href="{{ route ('admin.permission.destroy', $item -> id)}}"><i class="fe fe-trash"></i></a>
                                             </td>
                                        </tr>
@@ -69,6 +69,7 @@ use Session;
 							</div>
 						</div>
 						<div class="col-md-5">
+                            @if( $form_type === 'add')
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title">Add new permission</h4>
@@ -97,6 +98,37 @@ use Session;
 									</form>
 								</div>
 							</div>
+                            @endif
+                            @if( $form_type === 'edit')
+                            <div class="card">
+								<div class="card-header d-flex justify-content-between">
+									<h4 class="card-title">Edit Permission</h4> <a class="btn btn-primary btn-md" href="{{route('admin.permission')}}">Add New Permission</a>
+								</div>
+								<div class="card-body">
+
+                                @if( $errors -> any())
+                                <p class="alert alert-danger">{{$errors -> first()}} <button class="close" data-dismiss="alert">&times;</button></p>
+
+                                 @endif
+                                 @if(Session::has('success'))
+                                <p class="alert alert-success">{{Session::get('success')}} <button class="close" data-dismiss="alert">&times;</button></p>
+
+                                 @endif
+
+									<form action="{{ route('admin.permission.update', $edit_data -> id ) }}" method="POST">
+                                        @csrf
+										<div class="form-group">
+											<label>Permission Name</label>
+											<input value="{{$edit_data -> name}}" name="name" type="text" class="form-control">
+										</div>
+									
+										<div class="text-right">
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</div>
+									</form>
+								</div>
+							</div>
+                            @endif
 						</div>
 					</div>
 
