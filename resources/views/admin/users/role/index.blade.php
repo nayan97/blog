@@ -30,6 +30,7 @@
                                                 <td>#</td>
                                                 <td>Name</td>
                                                 <td>Slug</td>
+                                                <td>Permissions</td>
                                                 <td>Created at</td>
                                                 <td>Action</td>
                                             </tr>
@@ -40,6 +41,16 @@
                                         <tr>
                                             <td>{{$loop ->index + 1}}</td>
                                             <td>{{$item -> name}}</td>
+                                            <td>
+                                                
+                                                <ul>
+                                               @forelse ( json_decode($item -> permission) as $per)
+                                                        <li>{{$per}}</li>
+                                                    @empty
+                                                        <li>No Data Found</li>
+                                                    @endforelse
+                                                </ul>
+                                            </td>
                                             <td>{{$item -> slug}}</td>
                                             <td>{{$item -> created_at -> diffForHumans()}}</td>
                                             <td>
