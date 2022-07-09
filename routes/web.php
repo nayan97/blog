@@ -23,6 +23,7 @@ Route::post ('permission-update/{id}', [ PermissiondController::class,'update'])
 // Roles
 
 Route::get ('role', [ RoleController::class,'index'])-> name('admin.role');
+Route::post ('role', [ RoleController::class,'store'])-> name('admin.role.store');
 
 
 // Admins

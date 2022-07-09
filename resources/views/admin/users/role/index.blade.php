@@ -35,18 +35,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
-                                       <tr>
-                                            <td>1</td>
-                                            <td>Slider</td>
-                                            <td>slider</td>
-                                            <td>10 min ago</td>
+
+                                        @forelse ($roles as $item)
+                                        <tr>
+                                            <td>{{$loop ->index + 1}}</td>
+                                            <td>{{$item -> name}}</td>
+                                            <td>{{$item -> slug}}</td>
+                                            <td>{{$item -> created_at -> diffForHumans()}}</td>
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
                                                 <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
                                                 <a class="btn btn-sm btn-danger" href="#"><i class="fe fe-trash"></i></a>
                                             </td>
-                                       </tr>
+                                       </tr> 
+                                        @empty
+                                            
+                                        @endforelse
+                                           
+                                     
                                         </tbody>
                                     </table>
 								
@@ -59,20 +65,25 @@
 									<h4 class="card-title">Add new Role</h4>
 								</div>
 								<div class="card-body">
-									<form action="#">
+
+
+                                @include('validate.success')
+                                @include('validate.error')
+									<form action="{{route ('admin.role.store')}}" method="POST">
+                                        @csrf
 										<div class="form-group">
 											<label>Permission Name</label>
-											<input type="text" class="form-control">
+											<input name="name" type="text" class="form-control">
                                             <hr>
-                                            <label for="" class="d-block">
-                                                <input type="checkbox"> Slider
-                                            </label>
-                                            <label for="" class="d-block">
-                                                <input type="checkbox"> Settings
-                                            </label>
-                                            <label for="" class="d-block">
-                                                <input type="checkbox"> Users
-                                            </label>
+
+                                            @forelse ($permissions as $item)
+
+                                            <label for="" class="d-block"><input name="per[]" value="{{ $item -> name}}" type="checkbox"> {{ $item -> name}}</label>
+
+                                            @empty
+                                                <p>No Permission Found</p>
+                                            @endforelse
+                                        
 										</div>
 									
 										<div class="text-right">
