@@ -19,7 +19,8 @@ class RoleController extends Controller
     {
       $permissions = Permission::all();
       $roles = Role::latest() -> get();
-       return view('admin.users.role.index', compact('permissions', 'roles'));
+      $type = 'add';
+       return view('admin.users.role.index', compact('permissions', 'roles', 'type'));
     }
 
      /**
@@ -42,6 +43,34 @@ class RoleController extends Controller
       ]);
       return back() ->with('success', 'Permission added successfuly');
      }
+
+     
+    /**
+     * Delete A Role
+     */
+
+    public function destroy($id)
+    {
+      $delete_data = Role::findOrFail($id);
+      $delete_data -> delete();
+      return redirect() -> route('admin.role') ->with('success-main', 'Role deleted successfuly');
+    }
+
+
+       /**
+     * Show All Role
+     */
+
+
+    public function edit($id)
+    { 
+      $permissions = Permission::all();
+      $role = Role::findOrFail($id);
+      $roles = Role::latest() -> get();
+      $type  = 'edit';
+       return view('admin.users.role.index', compact('permissions', 'roles', 'role', 'type'));
+    }
+
 
 
 }

@@ -99,7 +99,8 @@ use Session;
                             @if( $form_type === 'edit')
                             <div class="card">
 								<div class="card-header d-flex justify-content-between">
-									<h4 class="card-title">Edit Permission</h4> <a class="btn btn-primary btn-md" href="{{route('admin.permission')}}">Add New Permission</a>
+									<h4 class="card-title">Edit Permission</h4> 
+                                    <a class="btn btn-primary btn-md" href="{{route('admin.permission')}}">Add New Permission</a>
 								</div>
 								<div class="card-body">
 
