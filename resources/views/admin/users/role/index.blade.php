@@ -127,7 +127,7 @@
 
                                 @include('validate.success')
                                 @include('validate.error')
-									<form action="{{route ('admin.role.store')}}" method="POST">
+									<form action="{{route ('admin.role.update', $role -> id)}}" method="POST">
                                         @csrf
 										<div class="form-group">
 											<label>Role Name</label>
