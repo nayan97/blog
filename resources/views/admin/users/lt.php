@@ -24,3 +24,17 @@ Sincerely,
 Md Nayan Islam
 
 </p>
+
+
+<ul>
+                                                 
+                                                 
+                                                 
+                                                 @forelse (json_decode($item -> permission) as $per) 
+                                                      <li>{{ $per }}</li>
+                                                    @empty
+                                                    <li style="list-style:none;">No permission found</li>
+                                                    @endforelse
+
+                                                   
+                                                </ul>

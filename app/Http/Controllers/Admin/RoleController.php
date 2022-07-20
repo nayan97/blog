@@ -57,18 +57,16 @@ class RoleController extends Controller
     }
 
 
-       /**
-     * Show All Role
+ /**
+     * Edit role data 
      */
-
-
     public function edit($id)
-    { 
-      $permissions = Permission::all();
-      $role = Role::findOrFail($id);
-      $roles = Role::latest() -> get();
-      $type  = 'edit';
-       return view('admin.users.role.index', compact('permissions', 'roles', 'role', 'type'));
+    {
+        $permissions = Permission::all();
+        $role = Role::findOrFail($id);
+        $roles = Role::latest() -> get();
+        $type = 'edit';
+        return view('admin.users.role.index', compact('permissions', 'roles', 'role', 'type'));
     }
 
 

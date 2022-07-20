@@ -44,18 +44,23 @@
                                         @forelse ($roles as $item)
                                         <tr>
                                             <td>{{$loop ->index + 1}}</td>
+                                            <td>{{$item -> slug}}</td>
                                             <td>{{$item -> name}}</td>
                                             <td>
-                                                
                                                 <ul>
-                                               @forelse ( json_decode($item -> permission) as $per)
-                                                        <li>{{$per}}</li>
-                                                    @empty
-                                                        <li>No Data Found</li>
-                                                    @endforelse
+                                                       
+                                                    @forelse (json_decode($item -> permission) as $per) 
+                                                    <li>{{ $per }}</li>
+                                                  @empty
+                                                  <li style="list-style:none;">No permission found</li>
+                                                  @endforelse
                                                 </ul>
+                          
+                                        
+
+                                        
                                             </td>
-                                            <td>{{$item -> slug}}</td>
+                                            
                                             <td>{{$item -> created_at -> diffForHumans()}}</td>
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
@@ -95,13 +100,10 @@
 
                                             @forelse ($permissions as $item)
 
-                                            <label class="d-block">
-                                                <input name="per[]" @if( in_array($item -> name, json_decode($role -> permission )) ) checked @endif  value="{{ $item -> name }}" type="checkbox">
-                                                {{ $item -> name }}
-                                            </label>
+                                            <label for="" class="d-block"><input name="per[]" value="{{ $item -> name}}" type="checkbox"> {{ $item -> name}}</label>
 
                                             @empty
-                                                <p>No Role Found</p>
+                                                <p>No Permission Found</p>
                                             @endforelse
                                         
 										</div>
@@ -134,16 +136,19 @@
 
                                             @forelse ($permissions as $item)
 
-                                            <label for="" class="d-block"><input name="per[]" value="{{ $item -> name}}" type="checkbox"> {{ $item -> name}}</label>
+                                            <label class="d-block">
+                                                <input name="per[]" @if( in_array($item -> name, json_decode($role -> permission )) ) checked @endif  value="{{ $item -> name }}" type="checkbox">
+                                                {{ $item -> name }}
+                                            </label>
 
                                             @empty
-                                                <p>No Role Found</p>
+                                                <p>No Role Data Found</p>
                                             @endforelse
                                         
 										</div>
 									
 										<div class="text-right">
-											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-primary">Update</button>
 										</div>
 									</form>
 								</div>
