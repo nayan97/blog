@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email') -> unique();
             $table->string('cell') -> unique();
-            $table->string('password') -> nullable();
-            $table->string('photo');
-             $table->text('permission');
+            $table->string('username');
+            $table->string('password');
+            $table->string('photo') -> nullable();
             $table->boolean('status') -> default(true);
             $table->boolean('trash') -> default(false);
             $table->timestamps();

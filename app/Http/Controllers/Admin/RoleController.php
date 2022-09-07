@@ -70,12 +70,30 @@ class RoleController extends Controller
     }
 
 
-public function update( Request $request, $id)
+ /**
+     * Update role data 
+     */
 
+public function update(Request $request, $id)
 {
-  return $request -> all();
-}
 
+   $this -> validate($request, [
+       'name'  => 'required'
+   ]);
+
+
+  $update_data =  Role::findOrFail($id);
+
+  $update_data -> update([
+      'name'       => $request -> name,
+      'slug'       => Str::slug($request -> name),
+      'permission' => json_encode($request -> per)
+  ]);
+
+  return redirect() -> route('admin.role') -> with('success-main', 'Roel data updated');
+  
+
+}
 
 
 

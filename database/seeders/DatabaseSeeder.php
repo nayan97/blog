@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Role;
+use App\Models\Admin;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,7 +26,18 @@ class DatabaseSeeder extends Seeder
 
         
         
+Admin::create([
 
+'role_id'           => 1,
+'name'              => 'super Admin',
+'email'             => 'admin@gmail.com',
+'cell'              => '01750639637',
+'username'          =>  'super',
+'password'          =>   Hash::make('asdfghjkl'),
+
+
+
+]);
 
 
 
