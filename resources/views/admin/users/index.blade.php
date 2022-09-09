@@ -29,24 +29,40 @@
                                                 <tr>
                                                 <td>#</td>
                                                 <td>Name</td>
-                                                <td>Slug</td>
+                                                <td>Email</td>
+                                                <td>Cell</td>
+                                                <td>Role</td>
+
                                                 <td>Created at</td>
                                                 <td>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
+                                           @forelse ( $all_data as $item )
+                                               
+                                        
                                        <tr>
-                                            <td>1</td>
-                                            <td>Slider</td>
-                                            <td>slider</td>
-                                            <td>10 min ago</td>
+                                            <td>{{ $loop -> index +1}}</td>
+                                            <td>{{ $item -> name }}</td>
+                                            <td>{{ $item -> email }}</td>
+                                            <td>{{ $item -> cell }}</td>
+                                            <td>{{ $item -> role -> name }}</td>
+                                            <td>{{ $item -> created_at -> diffForHumans()}}</td>
+
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
                                                 <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
                                                 <a class="btn btn-sm btn-danger" href="#"><i class="fe fe-trash"></i></a>
                                             </td>
                                        </tr>
+                                       @empty
+                                       <tr>
+                                        <td colspan="6" class="text-center">
+                                            <p>No Role Data Found</p>
+                                        </td>
+                                    </tr>
+                                               
+                                       @endforelse
                                         </tbody>
                                     </table>
 								
@@ -85,6 +101,12 @@
 											<label>Role</label>
                                             <select name="" id="">
                                                 <option  class="form-control" value="">-select-</option>
+                                                @forelse ( $roles as $role)
+                                                <option  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
+                                                @empty
+                                                <option  class="form-control" value="">Roles Empty</option>
+                                                @endforelse
+                                              
                                             </select>
 										</div>
 									

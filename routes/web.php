@@ -31,7 +31,7 @@ Route::post('role-update/{id}', [ RoleController::class,'update'])-> name('admin
 
 // Admins
 
-Route::get ('admin-create', [ AdminController::class,'index'])-> name('admin.create');
+Route::get ('admin-all', [ AdminController::class,'index'])-> name('admin.all');
 
 
 

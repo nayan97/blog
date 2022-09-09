@@ -21,7 +21,7 @@
 							<li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="{{route ('admin.create')}}"> Admin User </a></li>
+									<li><a href="{{route ('admin.all')}}"> Admin User </a></li>
 									<li><a href="{{route ('admin.role')}}"> Role </a></li>
 									<li><a href="{{route ('admin.permission')}}"> Permision </a></li>
 								</ul>
