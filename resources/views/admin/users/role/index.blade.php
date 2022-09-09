@@ -69,7 +69,12 @@
                                             </td>
                                        </tr> 
                                         @empty
-                                            
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                <p>No Role Data Found</p>
+                                            </td>
+                                        </tr>
+                                       
                                         @endforelse
                                            
                                      

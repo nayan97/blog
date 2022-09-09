@@ -24,6 +24,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+
+        Role::create([
+            'name'      => 'Admin',
+            'slug'      => 'admin',
+            'permission' =>  json_encode([])
+
+        ]);
         
         
 Admin::create([

@@ -56,7 +56,11 @@ use Session;
                                          
                                          
                                          @empty
-
+                                         <tr>
+                                            <td colspan="6" class="text-center">
+                                                <p>No Permision Found</p>
+                                            </td>
+                                        </tr>
                                          @endforelse  
                                  
                                         </tbody>
