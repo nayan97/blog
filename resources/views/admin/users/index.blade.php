@@ -75,31 +75,34 @@
 									<h4 class="card-title">Add new Users</h4>
 								</div>
 								<div class="card-body">
-									<form action="#">
+                                    @include('validate.error')
+                                    @include('validate.success')
+                                    <form action="{{ route ('admin.store')}}" method="POST">
+                                        @csrf
 									<div class="form-group">
 											<label>Name</label>
-											<input type="text" class="form-control">
+											<input name= "name" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Email</label>
-											<input type="text" class="form-control">
+											<input name="email" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>User Name</label>
-											<input type="text" class="form-control">
+											<input name="uname" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Cell</label>
-											<input type="text" class="form-control">
+											<input name="cell" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Password</label>
-											<input type="password" class="form-control">
+											<input name="password" type="password" class="form-control">
 										</div>
 
                                         <div class="form-group">
 											<label>Role</label>
-                                            <select name="" id="">
+                                            <select name="role" id="">
                                                 <option  class="form-control" value="">-select-</option>
                                                 @forelse ( $roles as $role)
                                                 <option  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
