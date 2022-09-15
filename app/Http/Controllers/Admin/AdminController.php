@@ -28,31 +28,29 @@ class AdminController extends Controller
    }
  
 
-public function store (Request $request)
-{
- $this -> validate ( $request, [
+    /**
+     * User Data Store
+     */
+    public function store(Request $request)
+    {
+        $this -> validate( $request,  [
+            'name'              => 'required',
+            'email'             => 'required|email|unique:admins',
+            'cell'              => 'required|unique:admins',
+            'username'          => 'required|unique:admins'
+        ]);
 
-   'name'    =>   'required',
-   'email'   =>    'required|email|unique:admins',
-   'cell'    =>     'required|number|unique:admins',
-   'username'=>      'required|unique:admins '
+        Admin::create([
+            'name'              => $request -> name,
+            'role_id'           => $request -> role,
+            'email'             => $request -> email,
+            'cell'              => $request -> cell,
+            'username'          => $request -> username,
+            'password'          => Hash::make('1234567890'),
+            'photo'             => 'avatar.webp'
+        ]);
 
-
- ]);
-
-   Admin::create([
-
-         'name'      => $request -> name,
-         'email'     => $request -> email,
-         'cell'      => $request -> cell,
-         'username'  => $request -> username,
-         'password'  => Hash::make('1234567890'),
-         'photo'     => ''
-   ]);
-
-  return redirect() -> route('admin.all') -> with ('success', 'admin created successfily');
-
-
-}
+        return redirect() -> route('admin.all') -> with('success','Admin users created successful');
+    }
 
 }

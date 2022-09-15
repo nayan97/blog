@@ -87,13 +87,14 @@
 											<label>Email</label>
 											<input name="email" type="text" class="form-control">
 										</div>
-                                        <div class="form-group">
-											<label>User Name</label>
-											<input name="uname" type="text" class="form-control">
-										</div>
+                                     
                                         <div class="form-group">
 											<label>Cell</label>
 											<input name="cell" type="text" class="form-control">
+										</div>
+                                        <div class="form-group">
+											<label>User Nam</label>
+											<input name="username" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Password</label>
