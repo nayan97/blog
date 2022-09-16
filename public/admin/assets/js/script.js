@@ -235,5 +235,24 @@ Version      : 1.0
 		}
 	});
 
+
+		// Delete Data confermation
+
+		$('.delete-btn').click(function(){
+			let conf = confirm('Are You Sure');
+
+			if(conf){
+				return true;
+			}else{
+
+				return false;
+
+			}
+		});
+
+		
+
+
+
 	
 })(jQuery);

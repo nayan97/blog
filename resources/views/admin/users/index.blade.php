@@ -18,7 +18,7 @@
                 </div>
                 <!-- /Page Header -->
                 <div class="row">
-						<div class="col-md-7">
+						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title">All Users</h4>
@@ -52,7 +52,7 @@
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
                                                 <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
-                                                <a class="btn btn-sm btn-danger" href="#"><i class="fe fe-trash"></i></a>
+                                                <a class="btn btn-sm btn-danger delete-btn" href="{{route ('admin.all.destroy', $item ->id)}}"><i class="fe fe-trash"></i></a>
                                             </td>
                                        </tr>
                                        @empty
@@ -69,7 +69,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-4">
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title">Add new Users</h4>
