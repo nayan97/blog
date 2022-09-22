@@ -23,9 +23,12 @@
 								<div class="card-header">
 									<h4 class="card-title">All Users</h4>
 								</div>
+
 								<div class="card-body">
                                     <table class="table table-striped">
                                         <thead> 
+
+                                            @include('validate.success')
                                                 <tr>
                                                 <td>#</td>
                                                 <td>Name</td>

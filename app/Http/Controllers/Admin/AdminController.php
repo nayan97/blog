@@ -63,8 +63,19 @@ class AdminController extends Controller
 
     {
         $delete_data    = Admin:: FindOrFail($id);
-        $delete_data    ->delete();
-        return redirect() -> route('admin.all') -> with ('success-main', 'Admin Data Deleted Successfully');
+    
+
+            if($delete_data -> email == 'admin@gmail.com'){
+
+                return redirect() -> route('admin.all') -> with ('success-main', 'Admin Data Protected Successfully');
+            }else{
+
+                $delete_data    ->delete();
+                return redirect() -> route('admin.all') -> with ('success-main', 'Admin Data Deleted Successfully');
+            }
+
+
+       
     }
 
 
