@@ -28,6 +28,25 @@ class AdminController extends Controller
    }
  
 
+      /**
+     * edit Admins user
+     */
+
+
+    public function edit($id)
+    {
+
+      $roles = Role:: latest()  -> get();
+      $admins = Admin:: latest()  -> get();
+      $admin = Admin:: FindOrFail($id);
+       return view('admin.users.index',[
+         'all_data' => $admins ,
+         'type'      => 'edit',
+         'roles'     => $roles,
+         'admin'     => $admin
+      ]);
+   }
+ 
     /**
      * User Data Store
      */

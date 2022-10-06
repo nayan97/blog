@@ -28,11 +28,11 @@
                                     <table class="table table-striped">
                                         <thead> 
 
-                                            @include('validate.success')
+                                            @include('validate.success-main')
                                                 <tr>
                                                 <td>#</td>
                                                 <td>Name</td>
-                                                <td>Email</td>
+                                                <td class="m-width:150">Email</td>
                                                 <td>Cell</td>
                                                 <td>Role</td>
 
@@ -54,7 +54,7 @@
 
                                             <td>
                                                 <!----<a class="btn btn-sm btn-info" href="#"><i class="fe fe-eye"></i></a>-->
-                                                <a class="btn btn-sm btn-warning" href="#"><i class="fe fe-edit"></i></a>
+                                                <a class="btn btn-sm btn-warning" href="{{ route ('admin.all.edit', $item ->id)}}"><i class="fe fe-edit"></i></a>
                                                 <a class="btn btn-sm btn-danger delete-btn" href="{{route ('admin.all.destroy', $item ->id)}}"><i class="fe fe-trash"></i></a>
                                             </td>
                                        </tr>
@@ -73,6 +73,8 @@
 							</div>
 						</div>
 						<div class="col-md-4">
+
+                            @if($type == 'add')
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title">Add new Users</h4>
@@ -123,7 +125,62 @@
 									</form>
 								</div>
 							</div>
-						</div>
+                            @endif
+
+                            @if($type == 'edit')
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Edit User Data</h4>
+								</div>
+								<div class="card-body">
+                                    @include('validate.error')
+                                    @include('validate.success')
+                                    <form action="{{ route ('admin.store')}}" method="POST">
+                                        @csrf
+									<div class="form-group">
+											<label>Name</label>
+											<input name= "name" type="text" class="form-control">
+										</div>
+                                        <div class="form-group">
+											<label>Email</label>
+											<input name="email" type="text" class="form-control">
+										</div>
+                                     
+                                        <div class="form-group">
+											<label>Cell</label>
+											<input name="cell" type="text" class="form-control">
+										</div>
+                                        <div class="form-group">
+											<label>User Nam</label>
+											<input name="username" type="text" class="form-control">
+										</div>
+                                        <div class="form-group">
+											<label>Password</label>
+											<input name="password" type="password" class="form-control">
+										</div>
+
+                                        <div class="form-group">
+											<label>Role</label>
+                                            <select name="role" id="">
+                                                <option  class="form-control" value="">-select-</option>
+                                                @forelse ( $roles as $role)
+                                                <option  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
+                                                @empty
+                                                <option  class="form-control" value="">Roles Empty</option>
+                                                @endforelse
+                                              
+                                            </select>
+										</div>
+									
+										<div class="text-right">
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</div>
+									</form>
+								</div>
+							</div>
+                            @endif
+                        
+                        </div>
 					</div>
 
                
