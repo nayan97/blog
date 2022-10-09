@@ -72,6 +72,25 @@ class AdminController extends Controller
         return redirect() -> route('admin.all') -> with('success','Admin users created successful');
     }
 
+    /* User Data update
+    */
+   public function update(Request $request, $id)
+   {
+       $edit_data = Admin::findOrFail($id);
+       $edit_data -> update ([
+        'name'              => $request -> name,
+        'role_id'           => $request -> role,
+        'email'             => $request -> email,
+        'cell'              => $request -> cell,
+        'username'          => $request -> username,
+        'photo'             => 'avatar.webp'
+
+       ]);
+
+       return redirect() -> route('admin.all') -> with('success','Admin user updated successfuly');
+   }
+
+
 
        /**
      * User Data Delete

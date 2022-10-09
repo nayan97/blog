@@ -129,30 +129,31 @@
 
                             @if($type == 'edit')
 							<div class="card">
-								<div class="card-header">
+								<div class="card-header d-flex justify-content-between">
 									<h4 class="card-title">Edit User Data</h4>
+                                    <a class="btn btn-primary btn-sm" href="{{route('admin.all')}}"> Add New User</a>
 								</div>
 								<div class="card-body">
                                     @include('validate.error')
                                     @include('validate.success')
-                                    <form action="{{ route ('admin.store')}}" method="POST">
+                                    <form action="{{ route ('admin.update', $admin  -> id)}}" method="POST">
                                         @csrf
 									<div class="form-group">
 											<label>Name</label>
-											<input name= "name" type="text" class="form-control">
+											<input name= "name" value="{{ $admin-> name}}" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Email</label>
-											<input name="email" type="text" class="form-control">
+											<input name="email" value="{{ $admin-> email}}"  type="text" class="form-control">
 										</div>
                                      
                                         <div class="form-group">
 											<label>Cell</label>
-											<input name="cell" type="text" class="form-control">
+											<input name="cell" value="{{ $admin-> cell}}" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>User Nam</label>
-											<input name="username" type="text" class="form-control">
+											<input name="username" value="{{ $admin-> username}}" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Password</label>
@@ -164,7 +165,7 @@
                                             <select name="role" id="">
                                                 <option  class="form-control" value="">-select-</option>
                                                 @forelse ( $roles as $role)
-                                                <option  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
+                                                <option @if($role -> id == $admin -> role_id) selected @endif  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
                                                 @empty
                                                 <option  class="form-control" value="">Roles Empty</option>
                                                 @endforelse
@@ -173,7 +174,7 @@
 										</div>
 									
 										<div class="text-right">
-											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-primary">Update</button>
 										</div>
 									</form>
 								</div>
