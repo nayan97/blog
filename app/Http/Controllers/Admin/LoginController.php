@@ -15,7 +15,15 @@ class LoginController extends Controller
     {
         return view('admin.login');
     }
-
+       /**
+     * Logout System
+     */
+    public function AdminLogoutSystem()
+    {
+        Auth::guard('admin') ->logout();
+       
+        return redirect () -> route('admin.login');
+    }
            /**
      * show login System
      */

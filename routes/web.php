@@ -7,12 +7,16 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissiondController;
 
-Route::get ('admin-login', [LoginController::class,'ShowLoginForm'])-> name('admin.login');
-Route::post ('admin-login', [LoginController::class,'AdminLoginSystem'])-> name('admin.login.system');
+Route::group(['middleware' => 'admin.redirect'], function(){
+    Route::get ('admin-login', [LoginController::class,'ShowLoginForm'])-> name('admin.login');
+    Route::post ('admin-login', [LoginController::class,'AdminLoginSystem'])-> name('admin.login.system');
+});
+   
 
 
 
 Route::group(['middleware' => 'admin'], function(){
+    Route::get ('admin-logout', [LoginController::class,'AdminLogoutSystem'])-> name('admin.logout.system');
     
     Route::get ('admin-dashboard', [DashboardController::class,'ShowAdminDashboard'])-> name('admin.dashboard');
 
