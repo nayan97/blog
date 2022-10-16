@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissiondController;
 
@@ -45,6 +46,13 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get ('admin-delete/{id}', [ AdminController::class,'destroy'])-> name('admin.all.destroy');
     Route::get ('admin-edit/{id}', [ AdminController::class,'edit'])-> name('admin.all.edit');
     Route::post ('admin-update/{id}', [ AdminController::class,'update'])-> name('admin.update');
+
+
+    //user profile routes
+    
+    Route::get ('admin-profile', [ ProfileController::class,'showProfilePage'])-> name('admin.profile');
+
+
 
 });
 

@@ -37,6 +37,15 @@
 								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Blank Page</span></a>
 							</li>
 							<li> 
+								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Our Client</span></a>
+							</li>
+							<li> 
+								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Testimonials</span></a>
+							</li>
+							<li> 
+								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Our Team</span></a>
+							</li>
+							<li> 
 								<a href="{{ route('admin.logout.system')}}"><i class="fe fe-logout"></i> <span>Logout</span></a>
 							</li>
 					
