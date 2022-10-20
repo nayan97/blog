@@ -20,15 +20,14 @@
                             <div class="row align-items-center">
                                 <div class="col-auto profile-image">
                                     <a href="#">
-                                        <img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-01.jpg">
+                                        <img class="rounded-circle" alt="User Image" src="{{ url('storage/admins/' . Auth::guard('admin') -> user() -> photo )}}">
                                     </a>
                                 </div>
                                 <div class="col ml-md-n2 profile-user-info">
-                                    <h4 class="user-name mb-0">Ryan Taylor</h4>
-                                    <h6 class="text-muted">ryantaylor@admin.com</h6>
-                                    <div class="user-Location"><i class="fa fa-map-marker"></i> Florida, United States</div>
-                                    <div class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                </div>
+                                    <h4 class="user-name mb-0">{{ Auth::guard('admin') -> user() -> name }}</h4>
+                                    <h6 class="text-muted">{{ Auth::guard('admin') -> user() -> email }}</h6>
+                                    <div class="user-Location"><i class="fa fa-map-user"> {{ Auth::guard('admin') -> user() -> username }}</i> </div>
+                                </div> 
                                 <div class="col-auto profile-btn">
                                     
                                     <a href="#" class="btn btn-primary">
@@ -44,6 +43,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#password_tab">Password</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " data-toggle="tab" href="#photo_tab">Profile Picture</a>
                                 </li>
                             </ul>
                         </div>	
@@ -212,6 +214,28 @@
                                 </div>
                             </div>
                             <!-- /Change Password Tab -->
+                                <!-- Change Password Tab -->
+                                <div id="photo_tab" class="tab-pane fade active show">
+                            
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Upload Your Profile Picture</h5>
+                                            <div class="row">
+                                                <div class="col-md-10 col-lg-6">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <input style="display: none" type="file" class="form-control" id="profile_photo">
+                                                            <label for="profile_photo"><img  style="width:100px"  src="storage/admins/photo.jpg" alt=""></label>
+                                                        </div>
+                                                
+                                                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Change Password Tab -->
                             
                         </div>
                     </div>
