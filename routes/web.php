@@ -51,6 +51,7 @@ Route::group(['middleware' => 'admin'], function(){
     //user profile routes
     
     Route::get ('admin-profile', [ ProfileController::class,'showProfilePage'])-> name('admin.profile');
+    Route::post ('admin-profile-photo-upload/{id}', [ ProfileController::class,'uploadProfilePhoto'])-> name('admin.profile.photo.upload');
 
 
 

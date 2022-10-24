@@ -65,27 +65,22 @@
                                                 </h5>
                                                 <div class="row">
                                                     <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Name</p>
-                                                    <p class="col-sm-10">John Doe</p>
+                                                    <p class="col-sm-10">{{ Auth::guard('admin') -> user() -> name }}</p>
                                                 </div>
-                                                <div class="row">
-                                                    <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Date of Birth</p>
-                                                    <p class="col-sm-10">24 Jul 1983</p>
-                                                </div>
+                                           
                                                 <div class="row">
                                                     <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
-                                                    <p class="col-sm-10">johndoe@example.com</p>
+                                                    <p class="col-sm-10">{{ Auth::guard('admin') -> user() -> email }}</p>
                                                 </div>
                                                 <div class="row">
                                                     <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
-                                                    <p class="col-sm-10">305-310-5857</p>
+                                                    <p class="col-sm-10">{{ Auth::guard('admin') -> user() -> cell }}</p>
                                                 </div>
                                                 <div class="row">
-                                                    <p class="col-sm-2 text-muted text-sm-right mb-0">Address</p>
-                                                    <p class="col-sm-10 mb-0">4663  Agriculture Lane,<br>
-                                                    Miami,<br>
-                                                    Florida - 33165,<br>
-                                                    United States.</p>
+                                                    <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Role</p>
+                                                    <p class="col-sm-10">{{ Auth::guard('admin') -> user() -> role -> name }}</p>
                                                 </div>
+                                           
                                             </div>
                                         </div>
                                         
@@ -214,28 +209,31 @@
                                 </div>
                             </div>
                             <!-- /Change Password Tab -->
-                                <!-- Change Password Tab -->
-                                <div id="photo_tab" class="tab-pane fade active show">
+                                <!-- Profile picture Tab -->
+                                <div id="photo_tab" class="tab-pane fade  show">
                             
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Upload Your Profile Picture</h5>
                                             <div class="row">
                                                 <div class="col-md-10 col-lg-6">
-                                                    <form>
+                                                    <form action="{{ route('admin.profile.photo.upload', Auth::guard('admin') -> user() -> id)}}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
                                                         <div class="form-group">
-                                                            <input style="display: none" type="file" class="form-control" id="profile_photo">
-                                                            <label for="profile_photo"><img  style="width:100px"  src="storage/admins/photo.jpg" alt=""></label>
+                                                            <input name="profile_photo" style="display: none" type="file" class="form-control" id="profile_photo">
+                                                            <label for="profile_photo">
+                                                                <img style="width:150px;cursor:pointer;" src="https://t4.ftcdn.net/jpg/02/83/72/41/360_F_283724163_kIWm6DfeFN0zhm8Pc0xelROcxxbAiEFI.jpg" alt="">
+                                                            </label>
                                                         </div>
                                                 
                                                         <button class="btn btn-primary" type="submit">Save Changes</button>
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </div>
-                                <!-- /Change Password Tab -->
+                                <!--Profile picture Tab -->
                             
                         </div>
                     </div>

@@ -16,7 +16,7 @@
 								<span>Pages</span>
 							</li>
 							<li> 
-								<a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+								<a href="{{ route('admin.profile')}}"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
