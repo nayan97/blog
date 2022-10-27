@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -50,5 +51,31 @@ class ProfileController extends Controller
          return back();
         
     }
+
+
+
+    /**
+     * Pasword Change
+     */
+
+        public function passwordChange(Request $request, $id)
+        {
+            $admin_data = Admin::findOrFail($id);
+            $this -> validate($request, [
+                'old_password'              =>  'required',
+                'password'                  =>  'required|confirmed',
+                'password_confirmation'     =>  'required'
+            ]);
+
+            if(password_verify($request -> old_password , $admin_data -> password ) ==false ){
+                return back() -> with('danger', 'Wrong old password');
+            }else{
+                $admin_data -> update([
+                    'password' => Hash::make($request -> password)
+                ]);
+                return back() -> with('success', 'Password Change Successfuly');
+            }
+        }
+
 
 }
