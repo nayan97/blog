@@ -38,10 +38,11 @@
 							</li>
 							@endif
 							<li class="submenu">
-								<a href="#"><i class="fe fe-warning"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-warning"></i> <span>Posts</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="error-404.html">404 Error </a></li>
-									<li><a href="error-500.html">500 Error </a></li>
+									<li><a href="error-404.html">Posts</a></li>
+									<li><a href="error-404.html">Tags</a></li>
+									<li><a href="error-500.html">Category</a></li>
 								</ul>
 							</li>
 							@if(in_array('Posts', $permissions))

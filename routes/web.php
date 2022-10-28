@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -53,6 +54,12 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get ('admin-profile', [ ProfileController::class,'showProfilePage'])-> name('admin.profile');
     Route::post ('admin-profile-photo-upload/{id}', [ ProfileController::class,'uploadProfilePhoto'])-> name('admin.profile.photo.upload');
     Route::post ('admin-password-change/{id}', [ ProfileController::class,'passwordChange'])-> name('admin.password.change');
+
+    // Tag Routs
+
+    Route::get ('post-tags', [ TagsController::class,'index'])-> name('post.tag.index');
+    Route::post ('post-tags', [ TagsController::class,'store'])-> name('post.tag.store');
+   
 
 
 
