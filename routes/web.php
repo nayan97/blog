@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -60,7 +61,16 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get ('post-tags', [ TagsController::class,'index'])-> name('post.tag.index');
     Route::post ('post-tags', [ TagsController::class,'store'])-> name('post.tag.store');
    
+    // Category Routs
 
+    Route::get ('post-Category', [ CategoryController::class,'index'])-> name('post.category.index');
+    Route::post ('post-Category', [ CategoryController::class,'store'])-> name('post.category.store');
+
+        // Category Routs
+
+        Route::get ('post-Category', [ CategoryController::class,'index'])-> name('post.category.index');
+        Route::post ('post-Category', [ CategoryController::class,'store'])-> name('post.category.store');
+   
 
 
 });

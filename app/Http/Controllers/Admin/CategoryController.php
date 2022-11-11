@@ -5,33 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Tag;
+use App\Models\Category;
 
-class TagsController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * Show All Tag
-     */
     public function index()
     {
-        $tags = Tag::latest() -> get();
-        $type = 'add';
-        return view('admin.post.tag.index', compact('tags', 'type'));
+        $all_data = Category::latest() -> get();
+        $form_type ='add';
+        return view('admin.post.category.index', compact('all_data', 'form_type'));
     }
-
-    /**
-     * Store Tag
-     */
     public function store(Request $request)
     {
       $this -> validate($request, [
         'name'      => 'required'
       ]);
-      Tag::create([
+      Category::create([
         'name'  => $request -> name,
         'slug'  => Str::slug($request -> name)
 
       ]);
-      return back() -> with('success', 'Tag Created Successfuly');
+      return back() -> with('success', 'Category Created Successfuly');
     }
 }
+

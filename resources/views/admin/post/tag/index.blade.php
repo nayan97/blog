@@ -32,12 +32,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @php
-                                                $type = 'add';
-                                                $roles = [];
-                                            @endphp
+                                      
 
-                                        @forelse ($roles as $item)
+                                        @forelse ($tags as $item)
                                         <tr>
                                             <td>{{$loop ->index + 1}}</td>
                                             <td>{{$item -> slug}}</td>

@@ -27,7 +27,7 @@
 							<li> 
 								<a href="{{ route('admin.profile')}}"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
 							</li>
-							@if(in_array('Users', $permissions))
+					
 							<li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
@@ -36,13 +36,13 @@
 									<li><a href="{{route ('admin.permission')}}"> Permision </a></li>
 								</ul>
 							</li>
-							@endif
+							
 							<li class="submenu">
 								<a href="#"><i class="fe fe-warning"></i> <span>Posts</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="error-404.html">Posts</a></li>
-									<li><a href="error-404.html">Tags</a></li>
-									<li><a href="error-500.html">Category</a></li>
+									<li><a href="{{ route ('post.tag.index')}}">Tags</a></li>
+									<li><a href="{{ route ('post.category.index')}}">Category</a></li>
 								</ul>
 							</li>
 							@if(in_array('Posts', $permissions))
