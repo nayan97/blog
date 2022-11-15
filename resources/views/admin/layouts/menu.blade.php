@@ -40,7 +40,7 @@
 							<li class="submenu">
 								<a href="#"><i class="fe fe-warning"></i> <span>Posts</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="error-404.html">Posts</a></li>
+									<li><a href="{{ route ('post.index')}}">Posts</a></li>
 									<li><a href="{{ route ('post.tag.index')}}">Tags</a></li>
 									<li><a href="{{ route ('post.category.index')}}">Category</a></li>
 								</ul>

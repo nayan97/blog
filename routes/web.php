@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagsController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissiondController;
 
@@ -66,10 +67,10 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get ('post-Category', [ CategoryController::class,'index'])-> name('post.category.index');
     Route::post ('post-Category', [ CategoryController::class,'store'])-> name('post.category.store');
 
-        // Category Routs
+        // Post Routs
 
-        Route::get ('post-Category', [ CategoryController::class,'index'])-> name('post.category.index');
-        Route::post ('post-Category', [ CategoryController::class,'store'])-> name('post.category.store');
+        Route::get ('post', [ PostController::class,'index'])-> name('post.index');
+        Route::post ('post', [ PostController::class,'store'])-> name('post.store');
    
 
 

@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-
+                            
                             @if($type == 'add')
 							<div class="card">
 								<div class="card-header">
@@ -109,11 +109,7 @@
 											<label>Role</label>
                                             <select name="role" id="">
                                                 <option  class="form-control" value="">-select-</option>
-                                                @forelse ( $roles as $role)
-                                                <option  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
-                                                @empty
-                                                <option  class="form-control" value="">Roles Empty</option>
-                                                @endforelse
+                                        
                                               
                                             </select>
 										</div>
@@ -163,11 +159,7 @@
 											<label>Role</label>
                                             <select name="role" id="">
                                                 <option  class="form-control" value="">-select-</option>
-                                                @forelse ( $roles as $role)
-                                                <option @if($role -> id == $admin -> role_id) selected @endif  class="form-control" value="{{$role -> id }}">{{$role -> name}}</option>  
-                                                @empty
-                                                <option  class="form-control" value="">Roles Empty</option>
-                                                @endforelse
+                                        
                                               
                                             </select>
 										</div>
