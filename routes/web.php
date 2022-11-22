@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\FrontendPageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -76,6 +77,15 @@ Route::group(['middleware' => 'admin'], function(){
 
 
 });
+
+
+
+/**
+ * FrontEnd Routes
+ */
+
+
+ Route::get ('/', [ FrontendPageController::class, 'showHomePage']) -> name('home.page');
 
 
 
