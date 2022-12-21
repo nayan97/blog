@@ -25,9 +25,19 @@
                                     @include('validate.success')
                                     <form action="#" method="POST">
                                         @csrf
-									<div class="form-group">
+										<div class="form-group">
 											<label>Title</label>
 											<input name= "name" type="text" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>Post Type</label>
+											<select name="" class="from-control" id="">
+												<option value="standard">Standard</option>
+												<option value="vdieo">Video</option>
+												<option value="gallery">Gallery</option>
+												<option value="audio">Audio</option>
+												<option value="quote">Quote</option>
+											</select>
 										</div>
                                      
                                         <div class="form-group">
@@ -40,7 +50,7 @@
 										</div>
                                         <div class="form-group">
 											<label>Tags</label>
-											<input name="password" type="password" class="form-control">
+											<input name="password" type="text" class="form-control">
 										</div>
 
 										<div class="text-right">
@@ -77,7 +87,7 @@
 									<h4 class="card-title">Tags</h4>
 								</div>
 								<div class="card-body">
-                                    <select class="form-control" name="" id="tags" multiple>
+                                    <select class="form-control" name="tag[]" id="tags" multiple>
                                     @forelse($tags as $tag)
                                     <option value="{{ $tag -> id }}"> {{ $tag -> name}}</option>
 
