@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\FrontendPageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -73,6 +74,11 @@ Route::group(['middleware' => 'admin'], function(){
         Route::get ('post', [ PostController::class,'index'])-> name('post.index');
         Route::get ('post-create', [ PostController::class,'create'])-> name('post.create');
         Route::post ('post', [ PostController::class,'store'])-> name('post.store');
+
+
+        // Slider Route
+
+        Route::resource ('/slider', SliderController::class );
    
 
 

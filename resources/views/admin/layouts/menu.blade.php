@@ -62,6 +62,11 @@
 								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Our Client</span></a>
 							</li>
 							@endif
+							@if(in_array('Slider', $permissions))
+							<li> 
+								<a href="{{ route ('slider.index')}}"><i class="fe fe-file"></i> <span>Slider</span></a>
+							</li>
+							@endif
 							@if(in_array('Testimonials', $permissions))
 							<li> 
 								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Testimonials</span></a>

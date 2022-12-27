@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SliderControler extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class SliderControler extends Controller
      */
     public function index()
     {
-        //
+        return view ('admin.slider.index',[
+            'type' => 'add'
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class SliderControler extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request ->all();
     }
 
     /**

@@ -65,19 +65,56 @@
 		<script src="{{ asset('admin/assets/plugins/raphael/raphael.min.js')}}"></script>    
 		<script src="{{ asset('admin/assets/plugins/morris/morris.min.js')}}"></script>  
 		<script src="{{ asset('admin/assets/js/chart.morris.js')}}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script  src="{{ asset ('admin/assets/js/script.js')}}"></script>
 		<script  src="{{ asset ('admin/assets/ckeditor/ckeditor.js')}}"></script>
-		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		<script  src="{{ asset ('admin/assets/js/script.js')}}"></script>
+		<script  src="{{ asset('custom/admin.js') }}"></script>
 		<script>
 			CKEDITOR.replace('post_editor');
 
 			$(document).ready(function() {
    			 $('#tags').select2();
 			});
+
+			$('#slider-photo').change(function(e){
+
+				
+	
+			const photo_url = URL.createObjectURL(e.target.files[0]);
+			
+			$('#slider-photo-preview').attr('src', photo_url);
+
+				});
+
+			// add new slider button
+
+			let btn_no =1;	
+			$('#add-new-slider-button').click(function(e){
+
+				e.preventDefault();
+
+			if(btn_no <= 2 ){
+		
+
+				$('.slider-btn-opt').append(`		
+				<div class="btn-opt-area">
+					<span>Button #${ btn_no }</span>
+					<input class="form-control"  name="btn-title[]" type="text" placeholder="Button Title"><br>
+					<input class="form-control" name="btn-link[]" type="text" placeholder="Button Link"><br> 
+				</div>
+				`);
+				btn_no++;
+			}else{
+				alert(` You Can not take more btn`);
+			}
+				});
+			
 		</script>
+	
+
 		
     </body>
  
-</html>
+</html> 
