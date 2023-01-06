@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class SliderController extends Controller
 {
@@ -13,9 +15,10 @@ class SliderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   $sliders = Slider::latest() -> get();
         return view ('admin.slider.index',[
-            'type' => 'add'
+            'type'     => 'add',
+            'sliders'  => $sliders
         ]);
     }
 
@@ -37,7 +40,34 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        return $request ->all();
+        $this -> validate($request,[
+            'title'        => 'required',
+            'subtitle'     => 'required',
+            'photo'        => 'required',
+
+        ]);
+
+        // image manegement
+        if($request -> hasFile('photo')){
+
+            $img =$request -> file('photo');
+            $file_name = md5(time().rand()).'.'. $img -> clientExtension();
+
+            $image = Image::make($img -> getRealPath());
+            $image -> save (storage_path('app/public/sliders/'. $file_name));
+
+        }
+        // sider add
+            Slider::create([
+                'title'          => $request -> title,
+                'Subtitle'       => $request -> subtitle,
+                'photo'          => $file_name
+
+
+            ]);
+
+            // return back
+            return back() -> with ('success', 'Slider added successfuly');
     }
 
     /**

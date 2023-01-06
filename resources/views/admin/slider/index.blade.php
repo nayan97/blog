@@ -34,7 +34,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
+											@forelse ( as )
+												
+											@empty
+												
+											@endforelse
+
                                         </tbody>
                                     </table>
 								
@@ -55,15 +60,15 @@
                                         @csrf
 									<div class="form-group">
 											<label>Title</label>
-											<input name= "name" type="text" class="form-control">
+											<input value="{{ old('title') }}" name= "title" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label>Sub Title</label>
-											<input name="subtitle" type="text" class="form-control">
+											<input value="{{ old('subtitle') }}" name="subtitle" type="text" class="form-control">
 										</div>
                                      
                                         <div class="form-group">
-											<label>Photo</label>
+											<label name="photo">Photo</label>
 											<br>
 										
 											<img style="max-width:100%" id="slider-photo-preview" src="" alt="">
