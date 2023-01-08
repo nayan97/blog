@@ -34,7 +34,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-											@forelse ( as )
+											@forelse ( $sliders as $item )
+											<tr>
+												<td>{{ $loop -> index + 1 }}</td>
+												<td>{{$item -> title}}</td>
+												<td><img style="width: 60px; height: 60px; object-fit: cover;" src="{{ url('storage/sliders/' . $item -> photo)}}" alt=""></td>
+												<td>{{ $item -> created_at -> diffForHumans() }}</td>
+												<td>
+                                            		@if($item -> status )
+                                              		  <span class="badge badge-success">Publihsed</span>
+                                               			 <a class="text-danger" href="#"><i class="fa fa-times"></i></a>
+                                           			 @else 
+                                                		<span class="badge badge-danger">Blocked User</span>
+                                                	<a class="text-success" href="#"><i class="fa fa-check"></i></a>
+                                            		@endif
+                                       		
+												<td>
+                                           			 {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> --}}
+                                            
+
+                                           				 <a class="btn btn-sm btn-warning" href="#"><i class="fa fa-edit"></i></a>
+                                            				<a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+
+                                            				{{-- <form action="#" class="d-inline delete-form" method="POST">
+                                               		 @csrf
+                                               		 @method('DELETE')
+                                               		 <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                                           		 </form> --}}
+                                        </td>
+												</td>
+											</tr>
 												
 											@empty
 												
