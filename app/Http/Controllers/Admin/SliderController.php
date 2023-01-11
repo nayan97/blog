@@ -47,6 +47,20 @@ class SliderController extends Controller
 
         ]);
 
+
+        //btn manegement
+
+        $buttons = [];
+        for( $i = 0; $i < count($request -> btn_title) ; $i++ ){
+            array_push($buttons,[
+                'btn_title'   => $request -> btn_title[$i],
+                'btn_link'    => $request -> btn_link[$i],
+                'btn_type'    => $request -> btn_type[$i]
+            ]);
+        }
+
+    
+
         // image manegement
         if($request -> hasFile('photo')){
 
@@ -61,7 +75,8 @@ class SliderController extends Controller
             Slider::create([
                 'title'          => $request -> title,
                 'Subtitle'       => $request -> subtitle,
-                'photo'          => $file_name
+                'photo'          => $file_name,
+                'btns'           => json_encode($buttons)
 
 
             ]);

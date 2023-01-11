@@ -101,8 +101,12 @@
 				$('.slider-btn-opt').append(`		
 				<div class="btn-opt-area">
 					<span>Button #${ btn_no }</span>
-					<input class="form-control"  name="btn-title[]" type="text" placeholder="Button Title"><br>
-					<input class="form-control" name="btn-link[]" type="text" placeholder="Button Link"><br> 
+					<input class="form-control"  name="btn_title[]" type="text" placeholder="Button Title"><br>
+					<input class="form-control" name="btn_link[]" type="text" placeholder="Button Link"><br> 
+					<select class="form-control" name="btn_type[]">
+						<option value="btn-light-out">Default</option>
+						<option value="btn-color btn-full">Red</option>
+					</select>
 				</div>
 				`);
 				btn_no++;

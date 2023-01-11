@@ -105,7 +105,7 @@
 										
 											<input style="display:none;" name="photo" type="file" class="form-control" id="slider-photo">
 											<label for="slider-photo">
-                                                 <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="https://t4.ftcdn.net/jpg/02/83/72/41/360_F_283724163_kIWm6DfeFN0zhm8Pc0xelROcxxbAiEFI.jpg" alt="">
+                                                 <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="admin\assets\img\sohel.JPG" alt="">
 											</label>
 										</div>
 										<hr>
