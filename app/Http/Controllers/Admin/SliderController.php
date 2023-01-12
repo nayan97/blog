@@ -104,7 +104,16 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slider  =  slider::findOrFail($id);
+
+    
+
+        $sliders = Slider::latest() -> get();
+        return view ('admin.slider.index',[
+            'type'     => 'edit',
+            'sliders'  => $sliders,
+            'slider'   => $slider
+        ]);
     }
 
     /**
@@ -116,7 +125,29 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      
+        $slider = Slider::findOrFail($id);
+
+        //btn manegement
+
+        $buttons = [];
+        for( $i = 0; $i < count($request -> btn_title) ; $i++ ){
+            array_push($buttons,[
+                'btn_title'   => $request -> btn_title[$i],
+                'btn_link'    => $request -> btn_link[$i],
+                'btn_type'    => $request -> btn_type[$i]
+            ]);
+        }
+            
+        //update data
+        $slider -> update([
+            'title'          => $request -> title,
+            'Subtitle'       => $request -> subtitle,
+            'btns'           => json_encode($buttons)
+
+        ]);
+
+        return back() -> with ('success', 'Slider Data updated successfuly');
     }
 
     /**

@@ -53,7 +53,7 @@
                                            			 {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> --}}
                                             
 
-                                           				 <a class="btn btn-sm btn-warning" href="#"><i class="fa fa-edit"></i></a>
+                                           				 <a class="btn btn-sm btn-warning" href="{{ route ('slider.edit', $item -> id )}}"><i class="fa fa-edit"></i></a>
                                             				<a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 
                                             				{{-- <form action="#" class="d-inline delete-form" method="POST">
@@ -80,7 +80,7 @@
                             @if($type == 'add')
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Add new Users</h4>
+									<h4 class="card-title">Add new Slider</h4>
 								</div>
 								<div class="card-body">
                                     @include('validate.error')
@@ -124,52 +124,66 @@
 							</div>
                             @endif
 
-                            @if($type == 'edit')
+							@if($type == 'edit')
 							<div class="card">
-								<div class="card-header d-flex justify-content-between">
-									<h4 class="card-title">Edit User Data</h4>
-                                    <a class="btn btn-primary btn-sm" href="{{route('admin.all')}}"> Add New User</a>
+								<div class="card-header">
+									<h4 class="card-title">Edit Slider</h4>
 								</div>
 								<div class="card-body">
                                     @include('validate.error')
                                     @include('validate.success')
-                                    <form action="{{ route ('admin.update', $admin  -> id)}}" method="POST">
+                                    <form action="{{ route ('slider.update', $slider -> id)}}" method="POST" enctype="multipart/form-data">
                                         @csrf
+										@method('PUT')
 									<div class="form-group">
-											<label>Name</label>
-											<input name= "name" value="{{ $admin-> name}}" type="text" class="form-control">
+											<label>Title</label>
+											<input value="{{ $slider -> title }}" name= "title" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
-											<label>Email</label>
-											<input name="email" value="{{ $admin-> email}}"  type="text" class="form-control">
+											<label>Sub Title</label>
+											<input value="{{ $slider -> subtitle }}" name="subtitle" type="text" class="form-control">
 										</div>
                                      
                                         <div class="form-group">
-											<label>Cell</label>
-											<input name="cell" value="{{ $admin-> cell}}" type="text" class="form-control">
+											<label name="photo">Photo</label>
+											<br>
+										
+											<img style="max-width:100%" id="slider-photo-preview" src="{{ url('storage/sliders/' . $slider -> photo)}}" alt="">
+											<br>
+										
+											<input style="display:none;" name="photo" type="file" class="form-control" id="slider-photo">
+											<label for="slider-photo">
+                                                 <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="admin\assets\img\sohel.JPG" alt="">
+											</label>
 										</div>
-                                        <div class="form-group">
-											<label>User Nam</label>
-											<input name="username" value="{{ $admin-> username}}" type="text" class="form-control">
-										</div>
-                                        <div class="form-group">
-											<label>Password</label>
-											<input name="password" type="password" class="form-control">
-										</div>
-										<div class="form-group">
-											<label>Password</label>
-											<input name="password" type="password" class="form-control">
-										</div>
-
-                                      
+										<hr>
+										<div class="form-group slider-btn-opt">
 									
+											@foreach ( json_decode($slider -> btns) as $btn )
+												<div class="btn-opt-area">
+													<span>Button #</span>
+													<input class="form-control" value="{{ $btn -> btn_title}}"  name="btn_title[]" type="text" placeholder="Button Title"><br>
+													<input class="form-control" value="{{ $btn -> btn_title}}" name="btn_link[]" type="text" placeholder="Button Link"><br> 
+													<select class="form-control" name="btn_type[]">
+														<option @if ($btn -> btn_type === 'btn-light-out') selected @endif value="btn-light-out">Default</option>
+														<option @if ($btn -> btn_type === 'btn-color btn-full') selected @endif value="btn-color btn-full">Red</option>
+													</select>
+												</div>
+													
+											@endforeach
+																
+										
+										</div>
+                                      
 										<div class="text-right">
-											<button type="submit" class="btn btn-primary">Update</button>
+											<button type="submit" class="btn btn-primary">Submit</button>
 										</div>
 									</form>
 								</div>
 							</div>
                             @endif
+
+                          
                         
                         </div>
 					</div>
