@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissiondController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 Route::group(['middleware' => 'admin.redirect'], function(){
     Route::get ('admin-login', [LoginController::class,'ShowLoginForm'])-> name('admin.login');
@@ -79,6 +80,9 @@ Route::group(['middleware' => 'admin'], function(){
         // Slider Route
 
         Route::resource ('/slider', SliderController::class );
+        Route::resource ('/testimonial', TestimonialController::class );
+
+        
    
 
 

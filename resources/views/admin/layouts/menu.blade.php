@@ -69,7 +69,7 @@
 							@endif
 							@if(in_array('Testimonials', $permissions))
 							<li> 
-								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Testimonials</span></a>
+								<a href="{{ route('testimonial.index')}}"><i class="fe fe-file"></i> <span>Testimonials</span></a>
 							</li>
 							@endif
 							@if(in_array('Our Team', $permissions))

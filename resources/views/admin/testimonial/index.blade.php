@@ -16,7 +16,7 @@
 						<div class="col-md-8">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">All Users</h4>
+									<h4 class="card-title">All Testimonals</h4>
 								</div>
 
 								<div class="card-body">
@@ -26,19 +26,19 @@
                                             @include('validate.success-main')
                                                 <tr>
                                                 <td>#</td>
-                                                <td>Title</td>
-                                                <td>Photo</td>
+                                                <td>Client</td>
+                                                <td>Company</td>
                                                 <td>Created at</td>
                                                 <td>Status</td>
                                                 <td>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-											@forelse ( $sliders as $item )
+											@forelse ( $testimonials as $item)
 											<tr>
-												<td>{{ $loop -> index + 1 }}</td>
-												<td>{{$item -> title}}</td>
-												<td><img style="width: 60px; height: 60px; object-fit: cover;" src="{{ url('storage/sliders/' . $item -> photo)}}" alt=""></td>
+												<td>{{ $loop ->index + 1}}</td>
+												<td>{{ $item ->  name}}</td>
+												<td>{{ $item -> company}}</td>
 												<td>{{ $item -> created_at -> diffForHumans() }}</td>
 												<td>
                                             		@if($item -> status )
@@ -63,7 +63,6 @@
                                                		 <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                                            		 </form> --}}
 												</td>
-												
 											</tr>
 												
 											@empty
@@ -81,40 +80,24 @@
                             @if($type == 'add')
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Add new Slider</h4>
+									<h4 class="card-title">Add new Review</h4>
 								</div>
 								<div class="card-body">
                                     @include('validate.error')
                                     @include('validate.success')
-                                    <form action="{{ route ('slider.store')}}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route ('testimonial.store')}}" method="POST">
                                         @csrf
 									<div class="form-group">
-											<label>Title</label>
-											<input value="{{ old('title') }}" name= "title" type="text" class="form-control">
+											<label>Client Name</label>
+											<input value="{{ old('name') }}" name= "name" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
-											<label>Sub Title</label>
-											<input value="{{ old('subtitle') }}" name="subtitle" type="text" class="form-control">
+											<label>Company</label>
+											<input value="{{ old('company') }}" name="company" type="text" class="form-control">
 										</div>
-                                     
                                         <div class="form-group">
-											<label name="photo">Photo</label>
-											<br>
-										
-											<img style="max-width:100%" id="slider-photo-preview" src="" alt="">
-											<br>
-										
-											<input style="display:none;" name="photo" type="file" class="form-control" id="slider-photo">
-											<label for="slider-photo">
-                                                 <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="admin\assets\img\sohel.JPG" alt="">
-											</label>
-										</div>
-										<hr>
-										<div class="form-group slider-btn-opt">
-									
-
-										<a id="add-new-slider-button" class="btn btn-sm btn-info" href="#">Add Slider Button</a>
-										
+											<label>Client Review</label>
+											<input value="{{ old('testimonial') }}" name="testimonial" type="text" class="form-control">
 										</div>
                                       
 										<div class="text-right">
