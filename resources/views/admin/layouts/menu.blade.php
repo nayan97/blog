@@ -59,7 +59,7 @@
 
 							@if(in_array('Clients', $permissions))
 							<li> 
-								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Our Client</span></a>
+								<a href="{{ route ('client.index')}}"><i class="fe fe-file"></i> <span>Our Client</span></a>
 							</li>
 							@endif
 							@if(in_array('Slider', $permissions))

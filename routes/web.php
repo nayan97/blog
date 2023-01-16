@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\FrontendPageController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -81,21 +82,14 @@ Route::group(['middleware' => 'admin'], function(){
 
         Route::resource ('/slider', SliderController::class );
         Route::resource ('/testimonial', TestimonialController::class );
+        Route::resource ('/client', ClientController::class );
 
-        
-   
-
-
-});
-
-
+    });
 
 /**
  * FrontEnd Routes
  */
-
-
- Route::get ('/', [ FrontendPageController::class, 'showHomePage']) -> name('home.page');
+    Route::get ('/', [ FrontendPageController::class, 'showHomePage']) -> name('home.page');
 
 
 

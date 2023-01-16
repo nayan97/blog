@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Testimonial;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Admin\TestimonialController;
+use Intervention\Image\Facades\Image;
+use App\Http\Controllers\Admin\ClientController;
 
-class TestimonialController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,11 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-       $testimonials = Testimonial::latest() -> get();
-        return view('admin.testimonial.index', [
-            'testimonials' => $testimonials,
-            'type'         => 'add'
+        $clients = Client::latest() -> get();
+        return view('admin.client.index', [
+            'clients'       => $clients,
+            'type'          => 'add'
         ]);
-
     }
 
     /**
@@ -43,22 +43,32 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         // validation
-        $this -> validate( $request, [
-            'name'         => ['required'], 
-            'company'      => ['required'],
-            'testimonial'  => ['required']
+        $this -> validate($request, [
+            'name'   => 'required',
+            'logo'   => 'required'
+            
         ]);
 
-        // data store
-        Testimonial::create([
 
-            'name'         => $request -> name, 
-            'company'      => $request -> company,
-            'testimonial'  => $request -> testimonial
-        ]);
+                 // logo image manage 
+        if( $request -> hasFile('logo') ){
 
-        return back() -> with('success', 'Testimonal Added Successfuly');
+            $img = $request -> file('logo');
+            $file_name = md5(time().rand()) .'.'. $img -> clientExtension();
 
+            $image = Image::make($img -> getRealPath());
+            $image -> save(storage_path('app/public/clients/' . $file_name) );
+
+            
+        }
+    
+            // store data 
+            Client::create([
+                'name'      => $request -> name,
+                'logo'      => $file_name,
+            ]);
+    
+            return back() -> with('success',  'Client added successful');
     }
 
     /**
