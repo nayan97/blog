@@ -11,7 +11,7 @@
         <ul class="slides">
 
           @php
-            $sliders = App\Models\Slider::latest() -> get();
+            $sliders = App\Models\Slider::where('status', true) -> where('trash' , false) -> take(3) ->latest() -> get();
           @endphp
 
           @foreach ($sliders as $slider )

@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{{ asset('admin/assets/css/feathericon.min.css')}}">
 		
 		<link rel="stylesheet" href="{{ asset('admin/assets/plugins/morris/morris.css')}}">
+		<link rel="stylesheet" href="{{ asset('admin/assets/icon/themify-icons.css') }}">
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css')}}">
@@ -113,6 +114,22 @@
 			}else{
 				alert(` You Can not take more btn`);
 			}
+				});
+
+
+				//counter 
+				$('button.show-icon').click(function (e) {
+					e.preventDefault();
+					$('#select-icon').modal('show')
+				});
+
+				// add icon
+				$('.select-icon-haq .preview-icon code').click (function () {
+
+					let icon_name = $(this).html();
+					$('.select-haq-icon-input').val(icon_name);
+					$('#select-icon').modal('hide');
+
 				});
 			
 		</script>

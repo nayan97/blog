@@ -10,4 +10,14 @@ class FrontendPageController extends Controller
     {
         return view('frontend.pages.home');
     }
+
+
+    // show contact us page
+    public function showContactPage()
+    {
+        return view('frontend.pages.contact');
+    }
+
 }
+
+

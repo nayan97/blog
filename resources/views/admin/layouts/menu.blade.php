@@ -62,6 +62,11 @@
 								<a href="{{ route ('client.index')}}"><i class="fe fe-file"></i> <span>Our Client</span></a>
 							</li>
 							@endif
+							@if(in_array('Counter', $permissions))
+							<li> 
+								<a href="{{ route ('counter.index')}}"><i class="fe fe-file"></i> <span>Counter</span></a>
+							</li>
+							@endif
 							@if(in_array('Slider', $permissions))
 							<li> 
 								<a href="{{ route ('slider.index')}}"><i class="fe fe-file"></i> <span>Slider</span></a>

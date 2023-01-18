@@ -62,10 +62,10 @@
               <a href="page-services.html">Services</a>
             </li>
             <li>
-              <a href="page-services-2.html">Services 2</a>
+              <a href="page-services-2.html">Blog</a>
             </li>
             <li>
-              <a href="page-contact.html">Contact</a>
+              <a href="{{ route('contact.page')}}">Contact</a>
             </li>
            
           </ul>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\FrontendPageController;
+use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -83,6 +84,7 @@ Route::group(['middleware' => 'admin'], function(){
         Route::resource ('/slider', SliderController::class );
         Route::resource ('/testimonial', TestimonialController::class );
         Route::resource ('/client', ClientController::class );
+        Route::resource ('/counter', CounterController::class );
 
     });
 
@@ -90,6 +92,7 @@ Route::group(['middleware' => 'admin'], function(){
  * FrontEnd Routes
  */
     Route::get ('/', [ FrontendPageController::class, 'showHomePage']) -> name('home.page');
+    Route::get ('/contact', [ FrontendPageController::class, 'showcontactPage']) -> name('contact.page');
 
 
 
