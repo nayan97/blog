@@ -4141,3 +4141,24 @@ table.table-inbox tbody tr.checked {
 		display: none;
 	}
 }
+
+
+
+/**
+	custom css
+*/
+
+.p-gallery {
+	display: flex;
+	flex-flow: wrap;
+	margin-left: -5px;
+
+}
+
+.p-gallery img{
+	width: 170px;
+	height: 170px;
+	object-fit: cover;
+	padding: 5px;
+	
+}

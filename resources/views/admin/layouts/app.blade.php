@@ -131,6 +131,22 @@
 					$('#select-icon').modal('hide');
 
 				});
+				
+				// port gall
+				$('#portfolio-gallery').change(function(e){
+					
+					const files = e.target.files;
+
+						let gallery_ui = '';
+
+						for( let i = 0; i < files.length ; i++ ) {
+						const obj_url = URL.createObjectURL(files[i]);
+						gallery_ui += `<img src="${ obj_url}">`;
+				}
+					$('.p-gallery').html(gallery_ui);
+					}); 
+					
+
 			
 		</script>
 	

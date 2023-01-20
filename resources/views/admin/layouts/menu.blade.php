@@ -48,8 +48,7 @@
 							<li class="submenu">
 								<a href="#"><i class="fe fe-warning"></i> <span>Portfolio</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="#">Posts</a></li>
-									<li><a href="{{ route ('post.tag.index')}}">Tags</a></li>
+									<li><a href="{{ route ('portfolio.index')}}">Portfolio</a></li>
 									<li><a href="{{ route ('portfolio-category.index')}}">Category</a></li>
 								</ul>
 							</li>
