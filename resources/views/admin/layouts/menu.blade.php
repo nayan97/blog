@@ -45,6 +45,14 @@
 									<li><a href="{{ route ('post.category.index')}}">Category</a></li>
 								</ul>
 							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-warning"></i> <span>Portfolio</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="#">Posts</a></li>
+									<li><a href="{{ route ('post.tag.index')}}">Tags</a></li>
+									<li><a href="{{ route ('portfolio-category.index')}}">Category</a></li>
+								</ul>
+							</li>
 							@if(in_array('Posts', $permissions))
 							<li> 
 								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Posts</span></a>

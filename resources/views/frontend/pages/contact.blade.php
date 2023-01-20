@@ -21,7 +21,7 @@
       </div>
     </section>
   
-  
+  @include('frontend.sections.counter')
 
  
   
