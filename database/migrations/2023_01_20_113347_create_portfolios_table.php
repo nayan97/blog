@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('title') ->  unique();
+            $table->string('name') ->  unique();
             $table->string('slug') -> unique();
             $table->string ('featured');
             $table->text('gallery') -> nullable();
             $table->string ('client') -> nullable();
-            $table->string ('date') -> nullable();
+            $table->string ('psd') -> nullable();
             $table->string ('link') -> nullable();
             $table->string ('type') -> nullable();
             $table->text ('desc') -> nullable();

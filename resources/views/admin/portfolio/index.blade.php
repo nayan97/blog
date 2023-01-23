@@ -39,11 +39,12 @@
 											@forelse ( $portfolios as $item )
 											<tr>
 												<td>{{ $loop -> index + 1 }}</td>
-												<td>{{$item -> title}}</td>
+												<td>{{$item -> name}}</td>
                                                 <td><img style="width: 60px; height: 60px; object-fit: cover;" src="{{ url('storage/portfolios/' . $item -> featured)}}" alt=""></td>
+												<td>{{$item -> client}}</td>
+												<td>{{ date ('F d, Y', strtotime($item -> psd))}}</td>
 												<td>{{ $item -> created_at -> diffForHumans() }}</td>
-                                                <td>{{$item -> client}}</td>
-                                                <td>{{$item -> date}}</td>
+                                                
 												<td>
                                             		@if($item -> status )
                                               		  <span class="badge badge-success">Publihsed</span>
@@ -90,18 +91,18 @@
 								<div class="card-body">
                                     @include('validate.error')
                                     @include('validate.success')
-                                    <form action="#" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route ('portfolio.store')}}" method="POST" enctype="multipart/form-data">
                                          @csrf
 									    <div class="form-group">
 											<label>Title</label>
-											<input value="{{ old('title') }}" name= "title" type="text" class="form-control">
+											<input value="{{ old('name') }}" name= "name" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
 											<label name="featured">Featured Photo</label>
 											<br>
 										
-											<img style="max-width:100%" id="slider-photo-preview" src="" alt="">
-											<br>
+											<img class="p-img" id="slider-photo-preview" src="" alt="">
+											<br><br>
 										
 											<input style="display:none;" name="photo" type="file" class="form-control" id="slider-photo">
 											<label for="slider-photo">
@@ -120,11 +121,111 @@
                                                  <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="admin\assets\img\sohel.JPG" alt="">
 											</label>
 										</div>
+										<div class="form-group">
+											<label>Project Category</label>
+                                            <ul class="port-cat">
+												@foreach ($portfooliocategories as $cat )
+													<li>
+														<label for=""><input name="cat[]" value="{{ $cat -> id}}" type="checkbox"> {{ $cat -> name}}</label>
+													</li>
+												@endforeach
+											
+											</ul>
+										</div>
+										<div class="form-group">
+											<label>Project Descrpetion</label>
+                                            <textarea name="prodesc" id="post_editor" cols="30" rows="10"></textarea>
+										</div>
+															
+
+										<div class="form-group">
+											<label>Project Steps</label>                        
+											<div class="accordion" id="accordionExample">
+
+												<div class="card portfolio-step shadow-sm">
+													<div class="card-header" id="headingOne">
+													<h6 style="cursor: pointer" class="mb-0" data-toggle="collapse" data-target="#collapseOne">
+														Step 01
+													</h6>
+													</div>
+												
+													<div id="collapseOne" class="collapse" data-parent="#accordionExample">
+													<div class="card-body">
+														<div class="my-3">
+														<label for="">Title</label>
+														<input name="title[]" type="text" class="form-control">
+														</div>
+														<div class="my-3">
+														<label for="">Description</label>
+														<textarea name="desc[]" class="form-control"></textarea>
+														</div>
+													</div>
+													</div>
+												</div>
+
+												<div class="card portfolio-step shadow-sm">
+													<div class="card-header" id="headingOne">
+														<h6 style="cursor: pointer" class="mb-0" data-toggle="collapse" data-target="#collapseTwo">
+															Step 02
+														</h6>
+													</div>
+												
+													<div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+														<div class="card-body">
+														<div class="my-3">
+															<label for="">Title</label>
+															<input name="title[]" type="text" class="form-control">
+														</div>
+														<div class="my-3">
+															<label for="">Description</label>
+															<textarea name="desc[]" class="form-control"></textarea>
+														</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="card portfolio-step shadow-sm">
+													<div class="card-header" id="headingOne">
+														<h6 style="cursor: pointer" class="mb-0" data-toggle="collapse" data-target="#collapseThree">
+															Step 03
+														</h6>
+													</div>
+												
+													<div id="collapseThree" class="collapse" data-parent="#accordionExample">
+														<div class="card-body">
+														<div class="my-3">
+															<label for="">Title</label>
+															<input name="title[]" type="text" class="form-control">
+														</div>
+														<div class="my-3">
+															<label for="">Description</label>
+															<textarea name="desc[]" class="form-control"></textarea>
+														</div>
+														</div>
+													</div>
+												</div>
+												
+
+											</div>
+										</div>
 									
                                         <div class="form-group">
 											<label>Client</label>
 											<input value="{{ old('client') }}" name="client" type="text" class="form-control">
 										</div>
+										<div class="form-group">
+											<label>Project Link</label>
+											<input value="{{ old('link') }}" name="link" type="text" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>Project Type</label>
+											<input value="{{ old('type') }}" name="type" type="text" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>Date of submit</label>
+											<input  value="{{ old('date') }}" name="date" type="date" class="form-control">
+										</div>
+									
                                       
 										<div class="text-right">
 											<button type="submit" class="btn btn-primary">Submit</button>
