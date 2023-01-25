@@ -29,6 +29,7 @@
                                                 <td>Title</td>
                                                 <td>Fetured</td>
                                                 <td>Client</td>
+												<td>Category</td>
                                                 <td>date</td>
                                                 <td>Created at</td>
                                                 <td>Status</td>
@@ -42,6 +43,15 @@
 												<td>{{$item -> name}}</td>
                                                 <td><img style="width: 60px; height: 60px; object-fit: cover;" src="{{ url('storage/portfolios/' . $item -> featured)}}" alt=""></td>
 												<td>{{$item -> client}}</td>
+												<td>
+													<ul>
+														@foreach ($item -> portfooliocategory as $cat )
+															<li>
+																{{ $cat -> name}}
+															</li>
+														@endforeach
+													</ul>
+												</td>
 												<td>{{ date ('F d, Y', strtotime($item -> psd))}}</td>
 												<td>{{ $item -> created_at -> diffForHumans() }}</td>
                                                 
@@ -116,7 +126,7 @@
                                         <div class="form-group">
 											<label name="gallery">Gallery</label>
 											<br>
-											<input style="display:none;" name="gallery" multiple type="file" class="form-control" id="portfolio-gallery">
+											<input style="display:none;" name="gallery[]" multiple type="file" class="form-control" id="portfolio-gallery">
 											<label for="portfolio-gallery">
                                                  <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="admin\assets\img\sohel.JPG" alt="">
 											</label>

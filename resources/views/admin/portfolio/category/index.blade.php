@@ -78,7 +78,7 @@
                             @if($type == 'add')
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Add new Counter</h4>
+									<h4 class="card-title">Add new Category</h4>
 								</div>
 								<div class="card-body">
                                     @include('validate.error')
@@ -90,13 +90,6 @@
 											<input value="{{ old('name') }}" name= "name" type="text" class="form-control">
 										</div>
                                         <div class="form-group">
-							
-										<div class="form-group">
-											<label>Count Value</label> <br>
-											<button class="btn btn-sm btn-info show-icon">Select a icon</button>
-											<hr>
-											<input name="icon" value="{{ old('count-icon') }}" type="text" class="form-control select-haq-icon-input">
-										</div>
 														
 										<div class="text-right">
 											<button type="submit" class="btn btn-primary">Submit</button>

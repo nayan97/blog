@@ -51,8 +51,7 @@ class PortfolioController extends Controller
             'photo'  => ['required'],
             'cat'    => ['required']
 
-        ]);
-
+       ]);
 
 
                 // image manegement
@@ -66,24 +65,52 @@ class PortfolioController extends Controller
         
                 }
 
+                // gallery manegement
+                    $gallery_files = [];
+                if($request -> hasFile('gallery')){
+                    $gallery =$request -> file('gallery');
+
+                    foreach ($gallery as $gall ) {
+                        $gall_name = md5(time().rand()).'.'. $gall -> clientExtension();
+
+                        $image = Image::make($gall -> getRealPath());
+                         $image -> save (storage_path('app/public/portfolios/'. $gall_name));
+                         array_push($gallery_files, $gall_name);
+                    }
+                }
+        // steps Manegement
+                $steps = [];
+            if (isset($request -> title)) {
+
+              for ($i=0; $i < count($request -> title); $i++) { 
+                array_push($steps,[
+                    'title'  => $request -> title[$i],
+                    'desc'   => $request -> desc[$i]
+                ]);
+              }
+            }
 
 
 
         // store Data
 
-        Portfolio::create([
-                'name'    => $request -> name,
-                'slug'    => Str::slug($request -> name),
-                'featured'=> $file_name,
-                'desc'    => $request -> prodesc,
-                'client'  => $request -> client,
-                'link'    => $request -> link,
-                'psd'    => $request -> date,
-                'type'    => $request -> type,
+        $portfolio = Portfolio::create([
+                'name'      => $request -> name,
+                'slug'      => Str::slug($request -> name),
+                'featured'  => $file_name,
+                'gallery'    => json_encode($gallery_files),
+                'steps'      => json_encode($steps),
+                'desc'       => $request -> prodesc,
+                'client'     => $request -> client,
+                'link'       => $request -> link,
+                'psd'        => $request -> date,
+                'type'       => $request -> type,
 
 
 
         ]);
+
+        $portfolio -> Portfooliocategory() -> attach($request -> cat);
 
         // return back
             return back() -> with ('success', 'Portfolio added successfuly');
