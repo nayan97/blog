@@ -56,7 +56,7 @@
               <a href="page-about.html">About</a>
             </li>
             <li>
-              <a href="page-about-2.html">About</a>
+              <a href="#">About</a>
             </li>
             <li>
               <a href="page-services.html">Services</a>

@@ -97,6 +97,7 @@ Route::group(['middleware' => 'admin'], function(){
  */
     Route::get ('/', [ FrontendPageController::class, 'showHomePage']) -> name('home.page');
     Route::get ('/contact', [ FrontendPageController::class, 'showcontactPage']) -> name('contact.page');
+    Route::get ('/portfolios-single/{slug}', [ FrontendPageController::class, 'showSinglePortfolioPage']) -> name('portfolios.page');
 
 
 
