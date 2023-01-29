@@ -15,6 +15,9 @@ class CategoryController extends Controller
         $form_type ='add';
         return view('admin.post.category.index', compact('all_data', 'form_type'));
     }
+
+
+    
     public function store(Request $request)
     {
       $this -> validate($request, [

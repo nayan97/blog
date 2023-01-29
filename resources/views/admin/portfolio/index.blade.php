@@ -110,10 +110,8 @@
                                         <div class="form-group">
 											<label name="featured">Featured Photo</label>
 											<br>
-										
 											<img class="p-img" id="slider-photo-preview" src="" alt="">
 											<br><br>
-										
 											<input style="display:none;" name="photo" type="file" class="form-control" id="slider-photo">
 											<label for="slider-photo">
                                                  <img class="" style="width:120px;cursor:pointer; margin-left: -10px !importent;" src="admin\assets\img\sohel.JPG" alt="">

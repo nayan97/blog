@@ -4175,3 +4175,10 @@ table.table-inbox tbody tr.checked {
 .port-cat li{
 	margin: 0;
 }
+
+.post-quote,
+.post-audio,
+.post-video,
+.post-gallery{
+  display: none;
+}

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title') -> unique();
             $table->string('slug') -> unique();
             $table->longText('content') ;
-            $table->text('featured') -> null;
+            $table->text('featured') -> nullable();
             $table->boolean('status') -> default(true);
             $table->boolean('trash') -> default(false);
             $table->timestamps();
