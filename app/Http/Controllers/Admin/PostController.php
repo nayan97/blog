@@ -63,34 +63,46 @@ class PostController extends Controller
             $image = Image::make($img -> getRealPath());
             $image -> save(storage_path('app/public/posts/' . $standard) );
         }
-                
+           
 
-                        // manage gallery post image 
-                    $gallery_files = [];
-                    if( $request -> hasFile('gallery') ){   
-                        $gallery = $request -> file('gallery');
+        // manage gallery post image 
+        $gallery_files = [];
+        if( $request -> hasFile('gallery') ){   
+            $gallery = $request -> file('gallery');
 
-                        foreach( $gallery as $gall ){
-                            $gall_name = md5(time().rand()) .'.'. $gall -> clientExtension();
-                            $image = Image::make($gall -> getRealPath());
-                            $image -> save(storage_path('app/public/posts/' . $gall_name) );
-                            array_push($gallery_files, $gall_name);
-                        }
+        foreach( $gallery as $gall ){
+            $gall_name = md5(time().rand()) .'.'. $gall -> clientExtension();
+            $image = Image::make($gall -> getRealPath());
+            $image -> save(storage_path('app/public/posts/' . $gall_name) );
+            array_push($gallery_files, $gall_name);
+        }
+        }
 
+        // featured post management
+       
+         $post_type = [
+        'post_type'     => $request -> type,
+        'standard'      => $standard ?? null,
+        'video'         => $request -> video,
+        'audio'         => $request -> audio,
+        'gallery'       => json_encode($gallery_files),
+         ];
 
-                    } 
-                // store 
-                $post = Post::create([
-                    'admin_id'      => Auth::guard('admin') -> user() -> id,
-                    'title'         => $request -> title,
-                    'slug'          => Str::slug($request -> title),
-                    'content'       => $request -> content,
-                
-                ]);
+        // store 
+
+        $post = Post::create([
+            'admin_id'      => Auth::guard('admin') -> user() -> id,
+            'title'         => $request -> title,
+            'slug'          => Str::slug($request -> title),
+            'content'       => $request -> content,
+            'featured'      => json_encode($post_type)
+         ]);
+         $post -> category() -> attach($request -> cat);
+         $post -> tag() -> attach($request -> tag);
+
         
-              
-                // return 
-                return back() -> with('success' , 'Post Category Added successful');
+        // return 
+        return back() -> with('success' , 'Post Category Added successful');
             
     }
 

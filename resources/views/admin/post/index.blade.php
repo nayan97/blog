@@ -28,10 +28,8 @@
                                                 <tr>
                                                 <td>#</td>
                                                 <td>Title</td>
-                                                <td>Fetured</td>
-                                                <td>Client</td>
+                                                <td>Type</td>
 												<td>Category</td>
-                                                <td>date</td>
                                                 <td>Created at</td>
                                                 <td>Status</td>
                                                 <td>Action</td>
@@ -41,9 +39,20 @@
 											@forelse ( $posts as $item )
 											<tr>
 												<td>{{ $loop -> index + 1 }}</td>
-												<td>{{$item -> name}}</td>
-                                                <td><img style="width: 60px; height: 60px; object-fit: cover;" src="{{ url('storage/portfolios/' . $item -> featured)}}" alt=""></td>
-												<td>{{$item -> client}}</td>
+												<td>{{$item -> title }}</td>
+												<td> 
+													@php
+														$featured = json_decode($item -> featured);
+														echo $featured -> post_type;
+													@endphp
+												</td>
+												<td>
+													<ul>
+														@foreach ( $item -> category as $cat )
+															<li>{{ $cat -> name }}</li>
+														@endforeach
+													</ul>
+												</td>
 												<td>
 													<ul>
 													
