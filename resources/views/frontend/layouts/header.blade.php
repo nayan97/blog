@@ -62,7 +62,7 @@
               <a href="page-services.html">Services</a>
             </li>
             <li>
-              <a href="page-services-2.html">Blog</a>
+              <a href="{{ route('blog.page')}}">Blog</a>
             </li>
             <li>
               <a href="{{ route('contact.page')}}">Contact</a>

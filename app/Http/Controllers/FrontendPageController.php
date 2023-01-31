@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class FrontendPageController extends Controller
 {
@@ -28,6 +29,21 @@ class FrontendPageController extends Controller
         ]);
         
     }
+        // show Portfolio page
+        public function showBlogPage()
+        {   
+            $posts = Post::latest() -> get();
+            return view('frontend.pages.blog', [
+                'posts'   =>  $posts
+            ]);
+            
+        }
+    
+
+
+
+
+    
 
 }
 
