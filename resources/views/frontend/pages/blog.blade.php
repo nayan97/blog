@@ -20,6 +20,13 @@
         </div>
       </div>
 </section>
+    @php
+      if( isset($_GET['search']) ){
+        $key = $_GET['search'];
+        $posts = App\Models\Post::where('title', 'LIKE', '%'.$key.'%') -> orwhere('content', 'LIKE', '%'.$key.'%') -> get();
+      }
+      
+    @endphp
 
 <section>
       <div class="container">
@@ -75,7 +82,7 @@
                       <!-- Video Post -->
                         <div class="post-media">
                           <div class="media-video">
-                            <iframe src="https://www.youtube.com/embed/rrT6v5sOwJg" frameborder="0"></iframe>
+                            <iframe src="{{ $featured -> video}}" frameborder="0"></iframe>
                           </div>
                         </div>
                       

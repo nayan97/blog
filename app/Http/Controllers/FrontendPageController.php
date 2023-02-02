@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Category;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
-use App\Models\Post;
 
 class FrontendPageController extends Controller
 {
@@ -29,16 +31,36 @@ class FrontendPageController extends Controller
         ]);
         
     }
-        // show Portfolio page
-        public function showBlogPage()
-        {   
-            $posts = Post::latest() -> get();
-            return view('frontend.pages.blog', [
-                'posts'   =>  $posts
-            ]);
-            
-        }
-    
+
+    // show Portfolio page
+    public function showBlogPage()
+    {   
+        $posts = Post::latest() -> get();
+        return view('frontend.pages.blog', [
+            'posts'   =>  $posts
+        ]);
+        
+    }
+        // show post by category
+    public function showPostByCategory($slug)
+    {
+        $category = Category::where('slug', $slug) -> first();
+        $posts = $category -> post;
+        return view('frontend.pages.blog', [
+            'posts'   =>  $posts
+        ]);
+        
+    }
+    // show post by category
+    public function showPostByTag($slug)
+    {
+        $tag = Tag::where('slug', $slug) -> first();
+        $posts = $tag -> post;
+        return view('frontend.pages.blog', [
+            'posts'   =>  $posts
+        ]);
+        
+    }
 
 
 

@@ -83,7 +83,7 @@ class PostController extends Controller
          $post_type = [
         'post_type'     => $request -> type,
         'standard'      => $standard ?? null,
-        'video'         => $request -> video,
+        'video'         => $this -> embed($request -> video),
         'audio'         => $request -> audio,
         'gallery'       => json_encode($gallery_files),
          ];

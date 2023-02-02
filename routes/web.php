@@ -95,6 +95,9 @@ Route::group(['middleware' => 'admin'], function(){
  */
     Route::get ('/', [ FrontendPageController::class, 'showHomePage']) -> name('home.page');
     Route::get ('/blog', [ FrontendPageController::class, 'showBlogPage']) -> name('blog.page');
+    Route::get ('/category/{slug}', [ FrontendPageController::class, 'showPostByCategory']) -> name('blog.post.category');
+    Route::get ('/post-tag/{slug}', [ FrontendPageController::class, 'showPostByTag']) -> name('blog.post.tag');
+    Route::get ('/post-search/{slug}', [ FrontendPageController::class, 'showPostBySearch']) -> name('blog.post.search');
     Route::get ('/contact', [ FrontendPageController::class, 'showcontactPage']) -> name('contact.page');
     Route::get ('/portfolios-single/{slug}', [ FrontendPageController::class, 'showSinglePortfolioPage']) -> name('portfolios.page');
 
