@@ -22,4 +22,12 @@ class Controller extends BaseController
         $embed_arr = explode('&t', $embed_link);
         return $embed_arr[0]; 
     }
+
+    // Custom slug
+
+    public function slugMake($title)
+    {
+        $lower = strtolower($title);
+        return str_replace(' ', '-', $lower);
+    }
 }

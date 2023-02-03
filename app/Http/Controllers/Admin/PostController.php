@@ -93,7 +93,7 @@ class PostController extends Controller
         $post = Post::create([
             'admin_id'      => Auth::guard('admin') -> user() -> id,
             'title'         => $request -> title,
-            'slug'          => Str::slug($request -> title),
+            'slug'          => $this -> slugMake($request -> title),
             'content'       => $request -> content,
             'featured'      => json_encode($post_type)
          ]);
