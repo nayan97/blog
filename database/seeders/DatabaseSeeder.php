@@ -42,9 +42,19 @@ Admin::create([
 'username'          =>  'super',
 'password'          =>   Hash::make('asdfghjkl'),
 
-
-
 ]);
+Theme::create([
+
+    'logo'              => 'logo.png',
+    'copyright'         => '2022 Comet Agency',
+    'social'            => '[]',
+    'title'             => 'Comet',
+    'tagline'           => 'Comet Multiperpose ',
+ 
+    
+    
+    
+    ]);
 
 
 

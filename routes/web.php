@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\FrontendPageController;
@@ -87,6 +88,8 @@ Route::group(['middleware' => 'admin'], function(){
         Route::resource ('/counter', CounterController::class );
         Route::resource ('/portfolio-category', PortfolioCategoryController::class );
         Route::resource ('/portfolio', PortfolioController::class );
+
+        Route::resource ('/theme', ThemeController::class );
 
     });
 
