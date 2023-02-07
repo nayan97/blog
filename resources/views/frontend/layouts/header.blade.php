@@ -11,9 +11,8 @@
           <a href="{{ route ('home.page')}}">
             @if ($theme_data -> logo === 'logo.png')
               <img src="{{ url ('frontend/images/logo_light.png')}}" alt="" class="logo-light">
-              <img src="{{ url ('frontend/images/logo_dark.png')}}" alt="" class="logo-dark">
             @else
-              <img src="{{ url ('storage/logo/' . $theme_data ) }}" alt="" class="logo-light">
+              <img src="{{ url ('storage/logo/' . $theme_data -> logo ) }}" alt="" class="logo-light">
             @endif
             
       

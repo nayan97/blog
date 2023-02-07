@@ -64,6 +64,12 @@
 							</li>
 							@endif
 
+							@if(in_array('Theme', $permissions))
+							<li> 
+								<a href="{{ route ('theme.index')}}"><i class="fe fe-seting"></i> <span>Theme</span></a>
+							</li>
+							@endif
+
 							@if(in_array('Clients', $permissions))
 							<li> 
 								<a href="{{ route ('client.index')}}"><i class="fe fe-file"></i> <span>Our Client</span></a>

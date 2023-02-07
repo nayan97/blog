@@ -1,10 +1,16 @@
+@php
+  $theme_data = App\Models\Theme::find(1)
+@endphp  
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
   
 <!-- Mirrored from themes.hody.co/html/comet/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Jan 2017 09:39:31 GMT -->
 <head>
-    <title>Comet | Creative Multi-Purpose HTML Template</title>
+    <title> {{$theme_data -> title}}| {{ $theme_data -> tagline}}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
