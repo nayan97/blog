@@ -72,8 +72,25 @@ class FrontendPageController extends Controller
     ]);
     }
 
+       // show Servicess page
+       public function showServicePage()
+       {   
+        
+           return view('frontend.pages.servicess');
+           
+       }
+
+       
+       // show About page
+       public function showAboutPage()
+       {   
+        
+           return view('frontend.pages.about');
+           
+       }
 
 
+       
 
     
 

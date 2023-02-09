@@ -66,13 +66,10 @@
           
             </li>
             <li>
-              <a href="page-about.html">About</a>
+              <a href="{{ route('about.page')}}">About</a>
             </li>
             <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="page-services.html">Services</a>
+              <a href="{{ route('servicess.page')}}">Services</a>
             </li>
             <li>
               <a href="{{ route('blog.page')}}">Blog</a>

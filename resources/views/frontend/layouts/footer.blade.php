@@ -98,10 +98,10 @@
             <div class="col-md-4">
               <ul class="list-inline">
                 <li>
-                  <a href="#">About</a>
+                  <a href="{{ route('about.page')}}">About</a>
                 </li>
                 <li>
-                  <a href="#">Services</a>
+                  <a href="{{ route('servicess.page')}}">Services</a>
                 </li>
                 <li>
                   <a href="{{ route('blog.page')}}">Blog</a>
